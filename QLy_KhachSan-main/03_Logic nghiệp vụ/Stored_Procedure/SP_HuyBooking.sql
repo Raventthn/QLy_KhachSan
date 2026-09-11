@@ -52,7 +52,7 @@ BEGIN
             @VersionHienTai = dp.Version,
             @MaKHBooking = dp.MaKH,
             @TongTienGoc = dp.TongTien
-        FROM dbo.DAT_PHONG AS dp WITH (UPDLOCK, HOLDLOCK)
+        FROM dbo.DATPHONG AS dp WITH (UPDLOCK, HOLDLOCK)
         WHERE dp.MaDatPhong = @MaDatPhong;
 
         IF @VersionHienTai IS NULL
@@ -116,7 +116,7 @@ BEGIN
                  N'Hoàn tiền', GETDATE());
         END;
 
-        UPDATE dbo.DAT_PHONG
+        UPDATE dbo.DATPHONG
         SET TrangThai = N'Đã hủy',
             Version = Version + 1
         WHERE MaDatPhong = @MaDatPhong
@@ -127,7 +127,7 @@ BEGIN
             THROW 50215, N'Không thể hoàn tất hủy booking. Vui lòng tải lại dữ liệu.', 1;
 
         SELECT @VersionHienTai = dp.Version
-        FROM dbo.DAT_PHONG AS dp
+        FROM dbo.DATPHONG AS dp
         WHERE dp.MaDatPhong = @MaDatPhong;
 
         COMMIT TRANSACTION;

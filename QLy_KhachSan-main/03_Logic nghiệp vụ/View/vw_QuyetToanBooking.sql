@@ -47,7 +47,7 @@ DuLieuBooking AS (
         ISNULL(gd.SoGiaoDich, 0) AS SoGiaoDich,
         ISNULL(gd.SoGiaoDichBatThuong, 0) AS SoGiaoDichBatThuong,
         gd.NgayGiaoDichGanNhat
-    FROM dbo.DAT_PHONG AS dp
+    FROM dbo.DATPHONG AS dp
     INNER JOIN dbo.KHACHHANG AS kh ON kh.MaKH = dp.MaKH
     LEFT JOIN GiaoDichTheoBooking AS gd ON gd.MaDatPhong = dp.MaDatPhong
 ),

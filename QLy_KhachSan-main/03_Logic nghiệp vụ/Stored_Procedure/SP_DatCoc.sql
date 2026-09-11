@@ -45,7 +45,7 @@ BEGIN
             @TrangThai = dp.TrangThai,
             @VersionHienTai = dp.Version,
             @TongTien = dp.TongTien
-        FROM dbo.DAT_PHONG AS dp WITH (UPDLOCK, HOLDLOCK)
+        FROM dbo.DATPHONG AS dp WITH (UPDLOCK, HOLDLOCK)
         WHERE dp.MaDatPhong = @MaDatPhong;
 
         IF @VersionHienTai IS NULL
@@ -105,7 +105,7 @@ BEGIN
         VALUES
             (@MaGD, @MaDatPhong, @SoTien, N'Đặt cọc', @NgayGD);
 
-        UPDATE dbo.DAT_PHONG
+        UPDATE dbo.DATPHONG
         SET Version = Version + 1
         WHERE MaDatPhong = @MaDatPhong
           AND TrangThai = N'Đã đặt'
@@ -115,7 +115,7 @@ BEGIN
             THROW 50314, N'Không thể hoàn tất đặt cọc. Vui lòng tải lại booking.', 1;
 
         SELECT @VersionHienTai = dp.Version
-        FROM dbo.DAT_PHONG AS dp
+        FROM dbo.DATPHONG AS dp
         WHERE dp.MaDatPhong = @MaDatPhong;
 
         COMMIT TRANSACTION;

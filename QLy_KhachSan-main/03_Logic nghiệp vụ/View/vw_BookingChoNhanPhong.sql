@@ -50,7 +50,7 @@ SELECT
             THEN 1
         ELSE 0
     END AS BIT) AS CoTheNhanPhong
-FROM dbo.DAT_PHONG AS dp
+FROM dbo.DATPHONG AS dp
 INNER JOIN dbo.KHACHHANG AS kh ON kh.MaKH = dp.MaKH
 LEFT JOIN LichTheoBooking AS lb ON lb.MaDatPhong = dp.MaDatPhong
 WHERE dp.TrangThai = N'Đã đặt';

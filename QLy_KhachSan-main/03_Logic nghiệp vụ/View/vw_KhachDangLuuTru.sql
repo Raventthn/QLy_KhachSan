@@ -46,7 +46,7 @@ SELECT
             THEN DATEDIFF(DAY, lich.NgayTraDuKien, CONVERT(DATE, GETDATE()))
         ELSE 0
     END AS SoNgayQuaHan
-FROM dbo.DAT_PHONG AS dp
+FROM dbo.DATPHONG AS dp
 INNER JOIN dbo.KHACHHANG AS kh ON kh.MaKH = dp.MaKH
 LEFT JOIN LichTheoPhong AS lich ON lich.MaDatPhong = dp.MaDatPhong
 LEFT JOIN dbo.PHONG AS p ON p.MaPhong = lich.MaPhong

@@ -36,6 +36,6 @@ SELECT
         WHEN tt.NgayGD IS NULL THEN 1 ELSE 0
     END AS BIT) AS ThieuThoiDiemGiaoDich
 FROM dbo.THANHTOAN AS tt
-INNER JOIN dbo.DAT_PHONG AS dp ON dp.MaDatPhong = tt.MaDatPhong
+INNER JOIN dbo.DATPHONG AS dp ON dp.MaDatPhong = tt.MaDatPhong
 INNER JOIN dbo.KHACHHANG AS kh ON kh.MaKH = dp.MaKH;
 GO
